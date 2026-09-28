@@ -11,9 +11,10 @@ const nameSchema = z.object({
 
 type StartScreenProps = {
   onValidName: (name: string) => void;
+  onViewAllResults: () => void;
 };
 
-export function StartScreen({ onValidName }: StartScreenProps) {
+export function StartScreen({ onValidName, onViewAllResults }: StartScreenProps) {
   const [value, setValue] = useState("");
   const [error, setError] = useState<string | null>(null);
 
