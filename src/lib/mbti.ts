@@ -105,7 +105,7 @@ export const QUESTIONS: Question[] = [
     axis: "SN",
     prompt: "신뢰하는 판단의 근거는?",
     options: [
-      { pole: "S", label: "검증된 데이터", detail: "숫자와 Previous 경험을 믿는다" },
+      { pole: "S", label: "검증된 데이터", detail: "숫자와 지난 경험을 믿는다" },
       { pole: "N", label: "직관과 그림", detail: "연결해서 보이는 흐름을 믿는다" },
     ],
   },
@@ -160,7 +160,7 @@ export const QUESTIONS: Question[] = [
     prompt: "지금 당신의 책상은?",
     options: [
       { pole: "J", label: "제자리 있음", detail: "자리를 정해 두고 정리한다" },
-      { pole: "P", label: "조금 흐트러짐", detail: "寻找하기만 하면 된다" },
+      { pole: "P", label: "조금 흐트러짐", detail: "찾을 수만 있으면 된다" },
     ],
   },
 ];
@@ -274,7 +274,7 @@ export const MBTI_TYPES: Record<string, MbtiType> = {
   ENFP: {
     code: "ENFP",
     alias: "투사",
-    summary: "가능성에 불이 붙는 열정적인 아이디어형입니다. 사람과 새로움에_Openly_ 반응합니다.",
+    summary: "가능성에 불이 붙는 열정적인 아이디어형입니다. 사람과 새로움에 기꺼이 먼저 반응합니다.",
     strengths: ["열정", "영감", "친화력"],
     weaknesses: ["계획 지속", "산만", "감정 기복"],
   },
