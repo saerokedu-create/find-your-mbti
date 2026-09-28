@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState } from "react";
+import { AllResultsScreen } from "@/components/AllResultsScreen";
 import { AppChrome } from "@/components/AppChrome";
 import { QuizScreen } from "@/components/QuizScreen";
 import { ResultScreen } from "@/components/ResultScreen";
@@ -38,7 +39,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-type Step = "intro" | "quiz" | "result";
+type Step = "intro" | "quiz" | "result" | "history";
 
 function Index() {
   const [step, setStep] = useState<Step>("intro");
@@ -119,7 +120,14 @@ function Index() {
 
   return (
     <AppChrome>
-      {step === "intro" && <StartScreen onValidName={handleValidName} />}
+      {step === "intro" && (
+        <StartScreen
+          onValidName={handleValidName}
+          onViewAllResults={() => setStep("history")}
+        />
+      )}
+
+      {step === "history" && <AllResultsScreen onBack={() => setStep("intro")} />}
 
       {step === "quiz" && currentQuestion && (
         <QuizScreen
