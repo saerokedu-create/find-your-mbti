@@ -11,6 +11,7 @@ import {
   type MbtiResult,
   type Pole,
 } from "@/lib/mbti";
+import { loadLatestResult, saveResult } from "@/lib/results";
 
 const ADVANCE_DELAY = 280;
 
@@ -55,8 +56,18 @@ function Index() {
     }
   }
 
-  function handleValidName(validName: string) {
+  async function handleValidName(validName: string) {
     setName(validName);
+    try {
+      const saved = await loadLatestResult(validName);
+      if (saved) {
+        setResult(saved);
+        setStep("result");
+        return;
+      }
+    } catch {
+      // 저장된 결과 조회 실패 시 새 검사로 진행
+    }
     setStep("quiz");
   }
 
@@ -76,8 +87,12 @@ function Index() {
       timer.current = null;
 
       if (index + 1 >= QUESTIONS.length) {
-        setResult(buildResult(nextAnswers));
+        const finalResult = buildResult(nextAnswers);
+        setResult(finalResult);
         setStep("result");
+        void saveResult(name, finalResult).catch(() => {
+          // 저장 실패해도 결과 화면은 그대로 보여준다
+        });
       } else {
         setIndex(index + 1);
       }
