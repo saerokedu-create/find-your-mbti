@@ -319,6 +319,11 @@ export function buildResult(answers: AnswerMap): MbtiResult {
   });
 
   const code = axes.map((reading) => reading.dominant).join("");
+  const type = MBTI_TYPES[code];
 
-  return { code, type: MBTI_TYPES[code], axes };
+  if (!type) {
+    throw new Error(`Unknown MBTI type code: ${code}`);
+  }
+
+  return { code, type, axes };
 }

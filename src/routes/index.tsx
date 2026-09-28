@@ -64,6 +64,8 @@ function Index() {
     if (pending !== null) return;
 
     const question = QUESTIONS[index];
+    if (!question) return;
+
     const nextAnswers: AnswerMap = { ...answers, [question.id]: pole };
 
     setAnswers(nextAnswers);
