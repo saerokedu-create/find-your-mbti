@@ -30,3 +30,27 @@ export async function loadLatestResult(nickname: string): Promise<MbtiResult | n
 
   return { code: data.mbti_code, type, axes };
 }
+
+export type SavedResultSummary = {
+  id: string;
+  nickname: string;
+  mbtiCode: string;
+  createdAt: string;
+};
+
+export async function loadAllResults(limit = 100): Promise<SavedResultSummary[]> {
+  const { data, error } = await supabase
+    .from("mbti_results")
+    .select("id, nickname, mbti_code, created_at")
+    .order("created_at", { ascending: false })
+    .limit(limit);
+
+  if (error) throw error;
+
+  return (data ?? []).map((row) => ({
+    id: row.id,
+    nickname: row.nickname,
+    mbtiCode: row.mbti_code,
+    createdAt: row.created_at,
+  }));
+}
