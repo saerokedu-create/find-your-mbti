@@ -80,6 +80,14 @@ export function StartScreen({ onValidName, onViewAllResults }: StartScreenProps)
           ) : (
             <p className="mt-3 text-xs text-muted-foreground">이름은 결과 화면에만 사용됩니다.</p>
           )}
+
+          <button
+            type="button"
+            onClick={onViewAllResults}
+            className="mt-4 w-full rounded-xl bg-surface-strong px-6 py-3 text-sm font-medium text-secondary ring-1 ring-hairline transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring active:scale-[0.99]"
+          >
+            완료된 검사 전체 결과 보기
+          </button>
         </form>
       </div>
 
