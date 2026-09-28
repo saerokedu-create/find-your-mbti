@@ -2,9 +2,9 @@ import type { ReactNode } from "react";
 
 export function AppChrome({ children }: { children: ReactNode }) {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-background font-sans text-foreground antialiased">
+    <div className="relative min-h-screen w-full overflow-clip bg-background font-sans text-foreground antialiased">
       {/* ambient light sources */}
-      <div className="pointer-events-none absolute inset-0">
+      <div className="pointer-events-none absolute inset-0 overflow-clip">
         <div className="drift-a absolute -top-40 -left-32 size-[520px] rounded-full bg-glow-a blur-[120px]" />
         <div className="drift-b absolute top-1/3 -right-40 size-[560px] rounded-full bg-glow-b blur-[130px]" />
         <div className="absolute -bottom-40 left-1/3 size-[480px] rounded-full bg-glow-c blur-[120px]" />
