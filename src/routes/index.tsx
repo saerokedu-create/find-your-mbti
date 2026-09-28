@@ -100,13 +100,15 @@ function Index() {
     setResult(null);
   }
 
+  const currentQuestion = QUESTIONS[index];
+
   return (
     <AppChrome>
       {step === "intro" && <StartScreen onValidName={handleValidName} />}
 
-      {step === "quiz" && (
+      {step === "quiz" && currentQuestion && (
         <QuizScreen
-          question={QUESTIONS[index]}
+          question={currentQuestion}
           index={index}
           total={QUESTIONS.length}
           selected={pending}
