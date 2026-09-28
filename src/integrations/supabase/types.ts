@@ -14,30 +14,7 @@ export type Database = {
   }
   public: {
     Tables: {
-      mbti_results: {
-        Row: {
-          axes: Json
-          created_at: string
-          id: string
-          mbti_code: string
-          nickname: string
-        }
-        Insert: {
-          axes?: Json
-          created_at?: string
-          id?: string
-          mbti_code: string
-          nickname: string
-        }
-        Update: {
-          axes?: Json
-          created_at?: string
-          id?: string
-          mbti_code?: string
-          nickname?: string
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Views: {
       [_ in never]: never
